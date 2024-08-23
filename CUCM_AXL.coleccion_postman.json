@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "db7d3d2b-bfe1-4b32-b60c-32686b5a4a2c",
+		"name": "CUCM AXL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2133226"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Alta de Usuario",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "CUCM:DB ver={{version CUCM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.cisco.com/AXL/API/{{version CUCM}}\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ns:addUser >\r\n         <user>\r\n            <firstName>julian</firstName>\r\n            <displayName>Julian</displayName>\r\n            <middleName>Emmanuel</middleName>\r\n            <lastName>Herrera</lastName>\r\n            <userid>julian.herrera</userid>\r\n         </user>\r\n      </ns:addUser>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{CUCM}}:8443/axl/",
+							"protocol": "https",
+							"host": [
+								"{{CUCM}}"
+							],
+							"port": "8443",
+							"path": [
+								"axl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "CUCM:DB ver={{version CUCM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.cisco.com/AXL/API/{{version CUCM}}\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <ns:updateUser>\r\n         <userid>julian.herrera</userid>\r\n         <firstName>Pedro</firstName>\r\n         <displayName>Pedro</displayName>\r\n         <middleName>Jesus</middleName>\r\n      </ns:updateUser>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{CUCM}}:8443/axl/",
+							"protocol": "https",
+							"host": [
+								"{{CUCM}}"
+							],
+							"port": "8443",
+							"path": [
+								"axl",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Telefono",
+			"item": [
+				{
+					"name": "Alta de Telefono",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "CUCM:DB ver={{version CUCM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.cisco.com/AXL/API/{{version CUCM}}\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:addPhone>\r\n            <phone>\r\n                <name>CSFJULIANEHP</name>\r\n                <description>Prueba de POSTMAN</description>\r\n                <product>Cisco Unified Client Services Framework</product>\r\n                <class>Phone</class>\r\n                <protocol>SIP</protocol>\r\n                <protocolSide>User</protocolSide>\r\n                <devicePoolName>Default</devicePoolName>\r\n                <ownerUserName>julian.herrera</ownerUserName>\r\n                <lines>\r\n                    <line>\r\n                        <index>1</index>\r\n                        <dirn>\r\n                            <pattern>1000</pattern>\r\n                        </dirn> \r\n                    </line>\r\n                </lines>\r\n            </phone>\r\n        </ns:addPhone>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{CUCM}}:8443/axl/",
+							"protocol": "https",
+							"host": [
+								"{{CUCM}}"
+							],
+							"port": "8443",
+							"path": [
+								"axl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alta Extension",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{passsword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "CUCM:DB ver={{version CUCM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.cisco.com/AXL/API/{{Version CUCM}}\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:addLine>\r\n            <line>\r\n                <pattern>1000</pattern>\r\n                <alertingName>Prueba Postman</alertingName>\r\n                <usage>Device</usage>\r\n                <active>true</active>\r\n            </line>\r\n        </ns:addLine>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{CUCM}}:8443/axl/",
+							"protocol": "https",
+							"host": [
+								"{{CUCM}}"
+							],
+							"port": "8443",
+							"path": [
+								"axl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Telefono",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "CUCM:DB ver={{version CUCM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.cisco.com/AXL/API/{{version CUCM}}\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:updatePhone>\r\n            <name>NAME</name>\r\n            <description>TEXTO</description>\r\n        </ns:updatePhone>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{CUCM}}:8443/axl/",
+							"protocol": "https",
+							"host": [
+								"{{CUCM}}"
+							],
+							"port": "8443",
+							"path": [
+								"axl",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
